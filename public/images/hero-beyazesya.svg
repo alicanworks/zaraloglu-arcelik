@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img">
+  <defs>
+    <linearGradient id="bgop3k4x" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#eef1f5"/>
+      <stop offset="1" stop-color="#d3d8e0"/>
+    </linearGradient>
+    <radialGradient id="spotop3k4x" cx="0.5" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steelop3k4x" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#eef1f5" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#c7cdd6" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="glassop3k4x" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f6f9"/>
+      <stop offset="1" stop-color="#aab2be"/>
+    </linearGradient>
+    <linearGradient id="screenop3k4x" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#243056"/>
+      <stop offset="0.5" stop-color="#3c4a7d"/>
+      <stop offset="1" stop-color="#191f33"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bgop3k4x)"/>
+  <rect y="720" width="1600" height="280" fill="#000000" opacity="0.06"/>
+  <rect x="512" y="60" width="704" height="800" rx="18" fill="#e6001a" opacity="0.1"/>
+  <rect width="1600" height="1000" fill="url(#spotop3k4x)"/>
+  <ellipse cx="832" cy="800" rx="320" ry="35" fill="#0b0e13" opacity="0.14"/>
+  
+      <rect x="608" y="160" width="448.00000000000006" height="620" rx="22" fill="#ffffff" stroke="#c2c7d0" stroke-width="3"/>
+      <rect x="608" y="160" width="448.00000000000006" height="620" rx="22" fill="url(#steelop3k4x)"/>
+      <rect x="656" y="210" width="352" height="60" rx="8" fill="#e5e8ee"/>
+      <circle cx="976" cy="240" r="7" fill="#E30613"/>
+      <circle cx="832" cy="520" r="190" fill="#eaedf2" stroke="#c2c7d0" stroke-width="4"/>
+      <circle cx="832" cy="520" r="185" fill="none" stroke="#9aa1ad" stroke-width="10"/>
+      <circle cx="832" cy="520" r="110" fill="#cfd4dc"/>
+      <circle cx="832" cy="520" r="110" fill="url(#glassop3k4x)"/>
+  <text x="88" y="920" font-family="Geist, Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#8b93a0" letter-spacing="3">BEYAZ EŞYA</text>
+</svg>

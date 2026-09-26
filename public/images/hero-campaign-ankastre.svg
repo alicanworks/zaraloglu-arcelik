@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img">
+  <defs>
+    <linearGradient id="bge3rqvr" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#eceef3"/>
+      <stop offset="1" stop-color="#d1d5de"/>
+    </linearGradient>
+    <radialGradient id="spote3rqvr" cx="0.5" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steele3rqvr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#eef1f5" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#c7cdd6" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="glasse3rqvr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f6f9"/>
+      <stop offset="1" stop-color="#aab2be"/>
+    </linearGradient>
+    <linearGradient id="screene3rqvr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#243056"/>
+      <stop offset="0.5" stop-color="#3c4a7d"/>
+      <stop offset="1" stop-color="#191f33"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bge3rqvr)"/>
+  <rect y="720" width="1600" height="280" fill="#000000" opacity="0.06"/>
+  <rect x="512" y="60" width="704" height="800" rx="18" fill="#e6001a" opacity="0.1"/>
+  <rect width="1600" height="1000" fill="url(#spote3rqvr)"/>
+  <ellipse cx="832" cy="800" rx="320" ry="35" fill="#0b0e13" opacity="0.14"/>
+  
+      <rect x="592" y="180" width="480" height="600" rx="18" fill="#ffffff" stroke="#c2c7d0" stroke-width="3"/>
+      <rect x="592" y="180" width="480" height="600" rx="18" fill="url(#steele3rqvr)"/>
+      <rect x="656" y="240" width="352" height="10" rx="5" fill="#cfd4dc"/>
+      <circle cx="704" cy="290" r="7" fill="#E30613"/>
+      <rect x="648" y="370" width="368" height="340" rx="12" fill="#12151b"/>
+      <rect x="672" y="400" width="320" height="280" rx="8" fill="url(#screene3rqvr)" opacity="0.6"/>
+  
+</svg>

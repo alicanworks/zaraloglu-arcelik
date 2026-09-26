@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+  <defs>
+    <linearGradient id="bgf1loy1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#eef1f5"/>
+      <stop offset="1" stop-color="#d3d8e0"/>
+    </linearGradient>
+    <radialGradient id="spotf1loy1" cx="0.5" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steelf1loy1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#eef1f5" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#c7cdd6" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="glassf1loy1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f6f9"/>
+      <stop offset="1" stop-color="#aab2be"/>
+    </linearGradient>
+    <linearGradient id="screenf1loy1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#243056"/>
+      <stop offset="0.5" stop-color="#3c4a7d"/>
+      <stop offset="1" stop-color="#191f33"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgf1loy1)"/>
+  <rect y="648" width="1200" height="252.00000000000003" fill="#000000" opacity="0.06"/>
+  <rect x="384" y="54" width="528" height="720" rx="18" fill="#e6001a" opacity="0.1"/>
+  <rect width="1200" height="900" fill="url(#spotf1loy1)"/>
+  <ellipse cx="624" cy="720" rx="240" ry="31.500000000000004" fill="#0b0e13" opacity="0.14"/>
+  
+      <rect x="468" y="108" width="312" height="594" rx="20" fill="#ffffff" stroke="#c2c7d0" stroke-width="3"/>
+      <rect x="468" y="108" width="312" height="594" rx="20" fill="url(#steelf1loy1)"/>
+      <line x1="468" y1="324" x2="780" y2="324" stroke="#c2c7d0" stroke-width="3"/>
+      <rect x="504" y="153" width="12" height="117" rx="6" fill="#9aa1ad"/>
+      <rect x="504" y="369" width="12" height="270" rx="6" fill="#9aa1ad"/>
+      <circle cx="732" cy="207" r="8" fill="#E30613"/>
+  
+</svg>

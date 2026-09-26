@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img">
+  <defs>
+    <linearGradient id="bg4u1uok" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#fbfcfd"/>
+      <stop offset="1" stop-color="#eef1f5"/>
+    </linearGradient>
+    <radialGradient id="spot4u1uok" cx="0.5" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steel4u1uok" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#eef1f5" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#c7cdd6" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="glass4u1uok" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f6f9"/>
+      <stop offset="1" stop-color="#aab2be"/>
+    </linearGradient>
+    <linearGradient id="screen4u1uok" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#243056"/>
+      <stop offset="0.5" stop-color="#3c4a7d"/>
+      <stop offset="1" stop-color="#191f33"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg4u1uok)"/>
+  <rect y="648" width="900" height="252.00000000000003" fill="#000000" opacity="0.06"/>
+  <rect x="288" y="54" width="396" height="720" rx="18" fill="#e6001a" opacity="0.06"/>
+  <rect width="900" height="900" fill="url(#spot4u1uok)"/>
+  <ellipse cx="468" cy="720" rx="180" ry="31.500000000000004" fill="#0b0e13" opacity="0.14"/>
+  
+      <rect x="360" y="612" width="216" height="18" rx="9" fill="#dfe3ea"/>
+      <path d="M378 630 L391.5 324 Q468 252.00000000000003 544.5 324 L558 630 Z" fill="#ffffff" stroke="#c2c7d0" stroke-width="3"/>
+      <path d="M378 630 L391.5 324 Q468 252.00000000000003 544.5 324 L558 630 Z" fill="url(#steel4u1uok)"/>
+      <path d="M535.5 360 q72 4 54 162" fill="none" stroke="#9aa1ad" stroke-width="12" stroke-linecap="round"/>
+      <rect x="432" y="216" width="72" height="16" rx="8" fill="#9aa1ad"/>
+      <circle cx="468" cy="486.00000000000006" r="8" fill="#E30613"/>
+  
+</svg>

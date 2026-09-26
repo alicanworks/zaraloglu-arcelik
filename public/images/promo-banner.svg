@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 720" width="2000" height="720" role="img">
+  <defs>
+    <linearGradient id="bgdhd3e2" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#1b1f27"/>
+      <stop offset="1" stop-color="#0e1116"/>
+    </linearGradient>
+    <radialGradient id="spotdhd3e2" cx="0.5" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steeldhd3e2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#eef1f5" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#c7cdd6" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="glassdhd3e2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f6f9"/>
+      <stop offset="1" stop-color="#aab2be"/>
+    </linearGradient>
+    <linearGradient id="screendhd3e2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#243056"/>
+      <stop offset="0.5" stop-color="#3c4a7d"/>
+      <stop offset="1" stop-color="#191f33"/>
+    </linearGradient>
+  </defs>
+  <rect width="2000" height="720" fill="url(#bgdhd3e2)"/>
+  <rect y="518.4" width="2000" height="201.60000000000002" fill="#000000" opacity="0.06"/>
+  <rect x="640" y="43.199999999999996" width="880" height="576" rx="18" fill="#e6001a" opacity="0.22"/>
+  <rect width="2000" height="720" fill="url(#spotdhd3e2)"/>
+  <ellipse cx="1040" cy="576" rx="400" ry="25.200000000000003" fill="#0b0e13" opacity="0.14"/>
+  
+      <rect x="760" y="115.2" width="560" height="446.4" rx="22" fill="#ffffff" stroke="#c2c7d0" stroke-width="3"/>
+      <rect x="760" y="115.2" width="560" height="446.4" rx="22" fill="url(#steeldhd3e2)"/>
+      <rect x="820" y="151.2" width="440" height="43.199999999999996" rx="8" fill="#e5e8ee"/>
+      <circle cx="1220" cy="172.79999999999998" r="7" fill="#E30613"/>
+      <circle cx="1040" cy="374.40000000000003" r="136.8" fill="#eaedf2" stroke="#c2c7d0" stroke-width="4"/>
+      <circle cx="1040" cy="374.40000000000003" r="133.2" fill="none" stroke="#9aa1ad" stroke-width="10"/>
+      <circle cx="1040" cy="374.40000000000003" r="79.2" fill="#cfd4dc"/>
+      <circle cx="1040" cy="374.40000000000003" r="79.2" fill="url(#glassdhd3e2)"/>
+  
+</svg>
