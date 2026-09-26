@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Sofia_Sans } from "next/font/google";
 import "./globals.css";
 import { store } from "@/data/store";
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 
 const sofiaSans = Sofia_Sans({
   variable: "--font-sans",
@@ -34,24 +31,19 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Gerçek kök layout — sadece html/body kabuğu, font ve global metadata.
+ * Mağaza sitesinin header/footer'ı `(site)/layout.tsx`'te; admin panelin
+ * kendi chrome'u `admin/layout.tsx`'te. Böylece admin panel public site
+ * header/footer'ını miras almaz.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="tr" className={`${sofiaSans.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-surface text-ink antialiased">
-        <a
-          href="#icerik"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
-        >
-          İçeriğe geç
-        </a>
-        <AnnouncementBar />
-        <Header />
-        <main id="icerik" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

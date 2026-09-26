@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**.arcelik.com.tr" },
       { protocol: "https", hostname: "**.arcelik.com" },
       { protocol: "https", hostname: "arcelik.com.tr" },
+      // Supabase Storage'a yüklenen admin panel görselleri.
+      { protocol: "https", hostname: "**.supabase.co" },
     ],
   },
 };

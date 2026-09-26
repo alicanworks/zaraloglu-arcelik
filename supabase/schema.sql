@@ -143,3 +143,19 @@ create policy "blog_posts_public_read" on public.blog_posts
   for select using (published = true);
 create policy "blog_posts_admin_write" on public.blog_posts
   for all using (auth.uid() is not null) with check (auth.uid() is not null);
+
+-- ---------------------------------------------------------------------
+-- Storage: admin panelden yüklenen kampanya/blog görselleri
+-- ---------------------------------------------------------------------
+insert into storage.buckets (id, name, public)
+values ('media', 'media', true)
+on conflict (id) do nothing;
+
+create policy "media_public_read" on storage.objects
+  for select using (bucket_id = 'media');
+create policy "media_admin_insert" on storage.objects
+  for insert with check (bucket_id = 'media' and auth.uid() is not null);
+create policy "media_admin_update" on storage.objects
+  for update using (bucket_id = 'media' and auth.uid() is not null);
+create policy "media_admin_delete" on storage.objects
+  for delete using (bucket_id = 'media' and auth.uid() is not null);

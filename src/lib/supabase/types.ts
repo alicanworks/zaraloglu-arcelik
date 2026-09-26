@@ -40,6 +40,7 @@ export interface Database {
           end_date: string;
         };
         Update: Partial<Database["public"]["Tables"]["campaigns"]["Row"]>;
+        Relationships: [];
       };
       campaign_products: {
         Row: {
@@ -59,6 +60,15 @@ export interface Database {
         Update: Partial<
           Database["public"]["Tables"]["campaign_products"]["Row"]
         >;
+        Relationships: [
+          {
+            foreignKeyName: "campaign_products_campaign_id_fkey";
+            columns: ["campaign_id"];
+            isOneToOne: false;
+            referencedRelation: "campaigns";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       banners: {
         Row: {
@@ -77,6 +87,7 @@ export interface Database {
           image: string;
         };
         Update: Partial<Database["public"]["Tables"]["banners"]["Row"]>;
+        Relationships: [];
       };
       blog_posts: {
         Row: {
@@ -97,7 +108,12 @@ export interface Database {
           title: string;
         };
         Update: Partial<Database["public"]["Tables"]["blog_posts"]["Row"]>;
+        Relationships: [];
       };
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 }
