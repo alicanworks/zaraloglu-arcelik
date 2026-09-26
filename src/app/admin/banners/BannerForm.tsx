@@ -20,9 +20,6 @@ export function BannerForm({ initial }: { initial?: BannerRow }) {
   const [image, setImage] = useState(initial?.image ?? "");
   const [alt, setAlt] = useState(initial?.alt ?? "");
   const [href, setHref] = useState(initial?.href ?? "");
-  const [heading, setHeading] = useState(initial?.heading ?? "");
-  const [description, setDescription] = useState(initial?.description ?? "");
-  const [ctaLabel, setCtaLabel] = useState(initial?.cta_label ?? "");
   const [sortOrder, setSortOrder] = useState(
     initial?.sort_order?.toString() ?? "0"
   );
@@ -40,9 +37,9 @@ export function BannerForm({ initial }: { initial?: BannerRow }) {
       image,
       alt: alt || "",
       href: href || null,
-      heading: heading || null,
-      description: description || null,
-      cta_label: ctaLabel || null,
+      heading: null,
+      description: null,
+      cta_label: null,
       sort_order: Number(sortOrder) || 0,
       active,
     };
@@ -91,39 +88,6 @@ export function BannerForm({ initial }: { initial?: BannerRow }) {
             value={href ?? ""}
             onChange={(e) => setHref(e.target.value)}
             placeholder="/kampanyalar veya https://..."
-            className={inputClass}
-          />
-        </div>
-
-        <p className="mt-4 text-[12px] text-[#767676]">
-          Aşağıdaki başlık/açıklama/buton alanları doldurulursa fotoğrafın
-          üzerine yazı katmanı eklenir. Görselin kendi içinde yazı varsa
-          bunları boş bırakın.
-        </p>
-
-        <div className="mt-2">
-          <label className={labelClass}>Başlık (opsiyonel)</label>
-          <input
-            value={heading ?? ""}
-            onChange={(e) => setHeading(e.target.value)}
-            className={inputClass}
-          />
-        </div>
-        <div className="mt-4">
-          <label className={labelClass}>Açıklama (opsiyonel)</label>
-          <textarea
-            rows={2}
-            value={description ?? ""}
-            onChange={(e) => setDescription(e.target.value)}
-            className="mt-1.5 w-full rounded-[4px] border border-[#d6d6d6] px-3 py-2 text-sm outline-none focus:border-[#222]"
-          />
-        </div>
-        <div className="mt-4">
-          <label className={labelClass}>Buton Metni (opsiyonel)</label>
-          <input
-            value={ctaLabel ?? ""}
-            onChange={(e) => setCtaLabel(e.target.value)}
-            placeholder="Kampanyayı İncele"
             className={inputClass}
           />
         </div>
