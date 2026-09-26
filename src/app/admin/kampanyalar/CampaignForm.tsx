@@ -3,25 +3,15 @@
 import type React from "react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { Loader2, Plus, Trash2 } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import { campaignCategories } from "@/data/campaigns";
-import type { CampaignWithProducts } from "@/lib/admin/campaigns";
+import type { CampaignRow } from "@/lib/admin/campaigns";
 import {
   createCampaignAction,
   deleteCampaignAction,
   updateCampaignAction,
 } from "./actions";
-
-interface ProductDraft {
-  id?: string;
-  name: string;
-  image: string;
-  description: string;
-  old_price: string;
-  campaign_price: string;
-  highlights: string;
-}
 
 function slugify(input: string) {
   const map: Record<string, string> = {
@@ -44,11 +34,7 @@ function slugify(input: string) {
     .replace(/(^-|-$)/g, "");
 }
 
-export function CampaignForm({
-  initial,
-}: {
-  initial?: CampaignWithProducts;
-}) {
+export function CampaignForm({ initial }: { initial?: CampaignRow }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -72,38 +58,6 @@ export function CampaignForm({
     initial?.old_price?.toString() ?? ""
   );
   const [terms, setTerms] = useState(initial?.terms?.join("\n") ?? "");
-  const [products, setProducts] = useState<ProductDraft[]>(
-    initial?.campaign_products.map((p) => ({
-      id: p.id,
-      name: p.name,
-      image: p.image ?? "",
-      description: p.description ?? "",
-      old_price: p.old_price?.toString() ?? "",
-      campaign_price: p.campaign_price?.toString() ?? "",
-      highlights: p.highlights?.join(", ") ?? "",
-    })) ?? []
-  );
-
-  const addProduct = () =>
-    setProducts((prev) => [
-      ...prev,
-      {
-        name: "",
-        image: "",
-        description: "",
-        old_price: "",
-        campaign_price: "",
-        highlights: "",
-      },
-    ]);
-
-  const updateProduct = (i: number, patch: Partial<ProductDraft>) =>
-    setProducts((prev) =>
-      prev.map((p, idx) => (idx === i ? { ...p, ...patch } : p))
-    );
-
-  const removeProduct = (i: number) =>
-    setProducts((prev) => prev.filter((_, idx) => idx !== i));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,18 +81,6 @@ export function CampaignForm({
         .split("\n")
         .map((t) => t.trim())
         .filter(Boolean),
-      products: products.map((p) => ({
-        id: p.id,
-        name: p.name,
-        image: p.image || null,
-        description: p.description || null,
-        old_price: p.old_price ? Number(p.old_price) : null,
-        campaign_price: p.campaign_price ? Number(p.campaign_price) : null,
-        highlights: p.highlights
-          .split(",")
-          .map((h) => h.trim())
-          .filter(Boolean),
-      })),
     };
 
     startTransition(async () => {
@@ -327,111 +269,6 @@ export function CampaignForm({
           onChange={(e) => setTerms(e.target.value)}
           className="mt-2 w-full rounded-[4px] border border-[#d6d6d6] px-3 py-2 text-sm outline-none focus:border-[#222]"
         />
-      </section>
-
-      <section className="rounded-[6px] border border-[#e6e6e6] bg-white p-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-[15px] font-black">Kampanyaya Dahil Ürünler</h2>
-          <button
-            type="button"
-            onClick={addProduct}
-            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#d6d6d6] px-3 text-[12px] font-semibold hover:border-[#222]"
-          >
-            <Plus className="h-3.5 w-3.5" />
-            Ürün Ekle
-          </button>
-        </div>
-
-        <div className="mt-4 space-y-5">
-          {products.map((p, i) => (
-            <div
-              key={i}
-              className="rounded-[4px] border border-[#eee] p-4"
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-[12px] font-bold text-[#767676]">
-                  Ürün {i + 1}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => removeProduct(i)}
-                  className="text-[#767676] hover:text-[#c10228]"
-                  aria-label="Ürünü kaldır"
-                >
-                  <Trash2 className="h-4 w-4" />
-                </button>
-              </div>
-
-              <div className="mt-3 grid gap-3 md:grid-cols-2">
-                <div>
-                  <label className={labelClass}>Ürün Adı</label>
-                  <input
-                    value={p.name}
-                    onChange={(e) => updateProduct(i, { name: e.target.value })}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className={labelClass}>Özellikler (virgülle)</label>
-                  <input
-                    value={p.highlights}
-                    onChange={(e) =>
-                      updateProduct(i, { highlights: e.target.value })
-                    }
-                    placeholder="A++ Enerji, WiFi Kontrol"
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className={labelClass}>Eski Fiyat</label>
-                  <input
-                    type="number"
-                    value={p.old_price}
-                    onChange={(e) =>
-                      updateProduct(i, { old_price: e.target.value })
-                    }
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className={labelClass}>Kampanya Fiyatı</label>
-                  <input
-                    type="number"
-                    value={p.campaign_price}
-                    onChange={(e) =>
-                      updateProduct(i, { campaign_price: e.target.value })
-                    }
-                    className={inputClass}
-                  />
-                </div>
-              </div>
-
-              <div className="mt-3">
-                <label className={labelClass}>Açıklama</label>
-                <input
-                  value={p.description}
-                  onChange={(e) =>
-                    updateProduct(i, { description: e.target.value })
-                  }
-                  className={inputClass}
-                />
-              </div>
-
-              <div className="mt-3">
-                <ImageUploadField
-                  label="Ürün Görseli"
-                  value={p.image}
-                  onChange={(url) => updateProduct(i, { image: url })}
-                />
-              </div>
-            </div>
-          ))}
-          {products.length === 0 ? (
-            <p className="text-[13px] text-[#767676]">
-              Henüz ürün eklenmedi.
-            </p>
-          ) : null}
-        </div>
       </section>
 
       {error ? (
