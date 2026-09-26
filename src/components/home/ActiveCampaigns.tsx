@@ -1,11 +1,11 @@
 import { ArrowRight } from "lucide-react";
-import { getFeaturedCampaigns, type Campaign } from "@/data/campaigns";
+import type { Campaign } from "@/data/campaigns";
 import { CampaignListRow } from "@/components/campaigns/CampaignListRow";
 import { SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 
 export function ActiveCampaigns({ campaigns }: { campaigns: Campaign[] }) {
-  const featured = getFeaturedCampaigns();
+  const featured = campaigns.filter((c) => c.featured);
   const shown = featured.length > 0 ? featured : campaigns.slice(0, 3);
 
   return (

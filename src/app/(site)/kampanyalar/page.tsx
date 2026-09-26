@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { CampaignBrowser } from "@/components/campaigns/CampaignBrowser";
 import { ContactCTA } from "@/components/home/ContactCTA";
-import { campaigns } from "@/data/campaigns";
+import { getPublicCampaigns } from "@/lib/public/campaigns";
 
 export const metadata: Metadata = {
   title: "Kampanyalar",
@@ -10,7 +10,9 @@ export const metadata: Metadata = {
     "Zaraloğlu Arçelik mağazasındaki güncel kampanyalar: beyaz eşya, klima, televizyon, küçük ev aletleri ve ankastre fırsatları.",
 };
 
-export default function KampanyalarPage() {
+export default async function KampanyalarPage() {
+  const campaigns = await getPublicCampaigns();
+
   return (
     <>
       <section className="bg-surface">
