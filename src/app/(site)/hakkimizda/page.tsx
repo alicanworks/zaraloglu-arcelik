@@ -30,7 +30,7 @@ export default function HakkimizdaPage() {
       <section className="py-14 md:py-16">
         <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="text-[20px] font-black leading-snug text-ink md:text-[26px]">
+            <h2 className="text-[26px] font-black leading-snug text-ink md:text-[34px]">
               Ürünü elinizle görün, kararınızı güvenle verin.
             </h2>
             <div className="mt-4 space-y-5 text-base leading-relaxed text-ink-soft md:text-lg">
