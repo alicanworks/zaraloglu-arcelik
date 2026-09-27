@@ -15,7 +15,10 @@ const PHOTOS: GalleryPhoto[] = [
   { src: "/images/magaza-galeri/magaza-3.webp", alt: "Ankastre ve mutfak reyonu" },
   { src: "/images/magaza-galeri/magaza-4.webp", alt: "Televizyon ve elektronik vitrini" },
   { src: "/images/magaza-galeri/magaza-5.webp", alt: "Kasa ve dinlenme alanı" },
-  { src: "/images/magaza-galeri/magaza-6.webp", alt: "Mağaza dış cephesi" },
+  {
+    src: "/images/magaza-galeri/magaza-6.webp",
+    alt: "Ümraniye Arçelik mağazası dış cephesi",
+  },
 ];
 
 export function StoreGallery() {

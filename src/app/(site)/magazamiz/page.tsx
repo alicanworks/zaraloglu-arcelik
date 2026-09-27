@@ -10,9 +10,9 @@ import { StoreGallery } from "@/components/store/StoreGallery";
 import { store } from "@/data/store";
 
 export const metadata: Metadata = {
-  title: "Mağazamız",
+  title: "Ümraniye Arçelik Mağazası",
   description:
-    "Zaraloğlu Arçelik mağaza adresi, çalışma saatleri, telefon ve yol tarifi bilgileri.",
+    "Ümraniye Arçelik mağazası Zaraloğlu Arçelik adresi, çalışma saatleri, telefon ve yol tarifi bilgileri.",
 };
 
 export default function MagazamizPage() {
@@ -20,7 +20,7 @@ export default function MagazamizPage() {
     <>
       <PageHero
         eyebrow="Mağazamız"
-        title="Arçelik dünyasını mağazamızda keşfedin."
+        title="Ümraniye Arçelik Mağazamız"
         description={store.description}
       />
 
@@ -45,7 +45,7 @@ export default function MagazamizPage() {
           <div className="relative aspect-[5/4] overflow-hidden rounded-lg border border-line bg-surface-sunken">
             <Image
               src="/images/magaza-galeri/magaza-6.webp"
-              alt={`${store.shortName} mağaza dış cephesi`}
+              alt={`${store.shortName} Ümraniye mağaza dış cephesi`}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

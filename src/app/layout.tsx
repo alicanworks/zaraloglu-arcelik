@@ -12,17 +12,18 @@ const sofiaSans = Sofia_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://zaralogluarcelik.com.tr"),
   title: {
-    default: `${store.shortName} | ${store.dealerLine}`,
+    default: `${store.shortName} | Ümraniye Arçelik Mağazası`,
     template: `%s | ${store.shortName}`,
   },
-  description:
-    "Zaraloğlu Arçelik yetkili satış mağazası. Güncel beyaz eşya, klima, televizyon, küçük ev aletleri ve ankastre kampanyalarını keşfedin. Mağazamızı ziyaret edin veya WhatsApp'tan yazın.",
+  description: store.description,
   keywords: [
+    "Ümraniye Arçelik",
+    "Ümraniye Arçelik mağazası",
+    "Ümraniye Arçelik bayisi",
     "Arçelik bayi",
     "Arçelik kampanya",
     "beyaz eşya kampanya",
     "klima kampanya",
-    "Ümraniye Arçelik",
     "İstanbul Arçelik bayi",
   ],
   openGraph: {
@@ -36,7 +37,12 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ElectronicsStore",
   name: store.shortName,
+  alternateName: "Ümraniye Arçelik Mağazası",
   description: store.description,
+  areaServed: {
+    "@type": "City",
+    name: "Ümraniye, İstanbul",
+  },
   telephone: store.phoneDisplay,
   email: store.email,
   address: {

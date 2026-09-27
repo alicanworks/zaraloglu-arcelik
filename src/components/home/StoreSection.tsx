@@ -20,7 +20,7 @@ export function StoreSection() {
           <div>
             <span className="eyebrow">Mağazamız</span>
             <h2 className="mt-3 text-[22px] font-black leading-[1.15] lg:text-[32px]">
-              Arçelik dünyasını mağazamızda keşfedin.
+              Ümraniye Arçelik Mağazamızı Keşfedin
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-muted md:text-[15px]">
               {store.description}

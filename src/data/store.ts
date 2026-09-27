@@ -31,7 +31,7 @@ export const store: StoreInfo = {
   shortName: "Zaraloğlu Arçelik",
   dealerLine: "Yetkili Arçelik Satış Mağazası",
   description:
-    "Zaraloğlu Arçelik yetkili satış mağazası olarak beyaz eşyadan klimaya, televizyondan ankastre ürünlere kadar geniş bir yelpazede güncel kampanya fiyatlarını sizin için bir araya getiriyoruz. Ürünleri mağazamızda deneyimleyin, uzman danışmanlarımızdan destek alın.",
+    "Ümraniye Arçelik mağazası Zaraloğlu Arçelik, beyaz eşyadan klimaya, televizyondan ankastre ürünlere kadar geniş bir yelpazede güncel kampanya fiyatlarını sizin için bir araya getiriyor. Ürünleri mağazamızda deneyimleyin, uzman danışmanlarımızdan destek alın.",
   address: {
     line1: "Mehmet Akif Mah. Tavukçuyolu Cd. No: 168A",
     district: "Ümraniye",

@@ -14,7 +14,7 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-              {store.dealerLine}. Güncel mağaza kampanyalarını keşfedin, ürünleri
+              Ümraniye Arçelik Mağazası. Güncel kampanyaları keşfedin, ürünleri
               yerinde deneyimleyin.
             </p>
             <div className="mt-5 flex gap-2">

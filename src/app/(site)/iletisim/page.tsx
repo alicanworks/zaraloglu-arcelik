@@ -10,7 +10,7 @@ import { instagramProfile } from "@/data/instagram";
 export const metadata: Metadata = {
   title: "İletişim",
   description:
-    "Zaraloğlu Arçelik ile iletişime geçin: telefon, WhatsApp, e-posta, adres ve çalışma saatleri.",
+    "Ümraniye Arçelik mağazası Zaraloğlu Arçelik ile iletişime geçin: telefon, WhatsApp, e-posta, adres ve çalışma saatleri.",
 };
 
 export default function IletisimPage() {

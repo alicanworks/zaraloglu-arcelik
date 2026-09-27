@@ -7,9 +7,9 @@ import { ContactCTA } from "@/components/home/ContactCTA";
 import { store } from "@/data/store";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda",
+  title: "Ümraniye Arçelik Bayisi Hakkımızda",
   description:
-    "Zaraloğlu Arçelik yetkili satış mağazası hakkında: vizyonumuz, hizmet anlayışımız ve mağaza deneyimimiz.",
+    "Ümraniye Arçelik mağazası Zaraloğlu Arçelik hakkında: vizyonumuz, hizmet anlayışımız ve mağaza deneyimimiz.",
 };
 
 const stats = [
@@ -23,8 +23,8 @@ export default function HakkimizdaPage() {
     <>
       <PageHero
         eyebrow="Hakkımızda"
-        title="Yetkili Arçelik bayisi olarak yanınızdayız"
-        description="Zaraloğlu Arçelik, uzun yıllardır aynı mahallede hizmet veren, ürünü satın almadan önce deneyimlemenin önemine inanan bir yetkili satış mağazasıdır."
+        title="Ümraniye'de Yetkili Arçelik Bayisi"
+        description="Zaraloğlu Arçelik, Ümraniye'de uzun yıllardır aynı mahallede hizmet veren, ürünü satın almadan önce deneyimlemenin önemine inanan bir yetkili satış mağazasıdır."
       />
 
       <section className="py-14 md:py-16">
@@ -71,7 +71,7 @@ export default function HakkimizdaPage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-line bg-surface-sunken">
               <Image
                 src="/images/magaza-ekibi.jpg"
-                alt={`${store.shortName} mağaza ekibi`}
+                alt={`${store.shortName} Ümraniye mağaza ekibi`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

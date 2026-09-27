@@ -7,7 +7,7 @@ import { getPublicCampaigns } from "@/lib/public/campaigns";
 export const metadata: Metadata = {
   title: "Kampanyalar",
   description:
-    "Zaraloğlu Arçelik mağazasındaki güncel kampanyalar: beyaz eşya, klima, televizyon, küçük ev aletleri ve ankastre fırsatları.",
+    "Ümraniye Arçelik mağazası Zaraloğlu Arçelik'teki güncel kampanyalar: beyaz eşya, klima, televizyon, küçük ev aletleri ve ankastre fırsatları.",
 };
 
 export default async function KampanyalarPage() {

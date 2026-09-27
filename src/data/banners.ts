@@ -28,11 +28,11 @@ export const banners: Banner[] = [
   {
     id: "mutfak-buzdolabi",
     image: "/images/banners/mutfak-buzdolabi.webp",
-    alt: "Modern mutfakta Arçelik buzdolabı",
+    alt: "Ümraniye Arçelik mağazası — modern mutfakta Arçelik buzdolabı",
     href: "/kampanyalar",
-    heading: "Eviniz İçin Doğru Adres: Arçelik Güvencesi",
+    heading: "Ümraniye Arçelik Mağazası: Eviniz İçin Doğru Adres",
     description:
-      "Yetkili Arçelik bayisi olarak, evinizin ihtiyaç duyduğu her üründe güvenilir hizmet ve mağazamıza özel fiyatlar sunuyoruz.",
+      "Ümraniye'nin yetkili Arçelik bayisi olarak, evinizin ihtiyaç duyduğu her üründe güvenilir hizmet ve mağazamıza özel fiyatlar sunuyoruz.",
     ctaLabel: "Kampanyaları İncele",
   },
 ];
