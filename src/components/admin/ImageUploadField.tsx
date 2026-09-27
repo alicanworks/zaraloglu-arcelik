@@ -5,6 +5,15 @@ import Image from "next/image";
 import { ImageUp, Loader2, X } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
+const ALLOWED_TYPES: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "image/webp": "webp",
+  "image/gif": "gif",
+  "image/svg+xml": "svg",
+};
+const MAX_FILE_BYTES = 8 * 1024 * 1024; // 8 MB
+
 /**
  * Görsel yükleme alanı: dosya seçilince Supabase Storage'daki `media`
  * bucket'ına yükler, dönen genel (public) URL'i `value`'ya yazar. URL'i
@@ -24,11 +33,20 @@ export function ImageUploadField({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFile = async (file: File) => {
+    const ext = ALLOWED_TYPES[file.type];
+    if (!ext) {
+      setError("Sadece JPG, PNG, WEBP, GIF veya SVG görseli yükleyebilirsiniz.");
+      return;
+    }
+    if (file.size > MAX_FILE_BYTES) {
+      setError("Dosya çok büyük (maksimum 8 MB).");
+      return;
+    }
+
     setUploading(true);
     setError(null);
     try {
       const supabase = createClient();
-      const ext = file.name.split(".").pop() ?? "jpg";
       const path = `${crypto.randomUUID()}.${ext}`;
       const { error: uploadError } = await supabase.storage
         .from("media")

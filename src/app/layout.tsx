@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Sofia_Sans } from "next/font/google";
 import "./globals.css";
 import { store } from "@/data/store";
+import { jsonLdScript } from "@/lib/utils";
 
 const sofiaSans = Sofia_Sans({
   variable: "--font-sans",
@@ -91,7 +92,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-surface text-ink antialiased">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(localBusinessJsonLd) }}
         />
         {children}
       </body>

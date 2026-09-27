@@ -35,3 +35,16 @@ export function isCampaignActive(endIso: string, now: Date = new Date()): boolea
   end.setHours(23, 59, 59, 999);
   return end.getTime() >= now.getTime();
 }
+
+/**
+ * JSON-LD verisini `<script dangerouslySetInnerHTML>` içine güvenle
+ * gömmek için: içerikte `</script>`, `<!--` gibi diziler varsa (ör. bir
+ * blog başlığında) script etiketinden erken çıkışı / HTML yorum
+ * enjeksiyonunu engeller.
+ */
+export function jsonLdScript(data: unknown): string {
+  return JSON.stringify(data)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
+}

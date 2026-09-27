@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { getPublishedPostBySlug, getPublishedPosts } from "@/lib/public/blog";
+import { jsonLdScript } from "@/lib/utils";
 
 function formatDate(iso: string | null) {
   if (!iso) return "";
@@ -82,7 +83,7 @@ export default async function BlogPostPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(articleJsonLd) }}
       />
       <section className="bg-surface">
         <div className="container-page max-w-3xl pb-2 pt-10 md:pt-14">
