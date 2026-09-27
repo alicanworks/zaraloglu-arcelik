@@ -86,6 +86,11 @@ export function HeroCampaignSlider({ banners }: { banners: Banner[] }) {
             active ? "opacity-100" : "pointer-events-none opacity-0"
           );
 
+          const [headingLead, ...headingRest] = (banner.heading ?? "").split(
+            ": "
+          );
+          const headingTail = headingRest.join(": ");
+
           if (hasText) {
             return (
               <div key={banner.id} className={cn(classes, "block")} aria-hidden={!active}>
@@ -94,7 +99,15 @@ export function HeroCampaignSlider({ banners }: { banners: Banner[] }) {
                 <div className="container-page relative flex h-full items-center">
                   <div className="max-w-lg">
                     <h1 className="text-[28px] font-black leading-[1.12] text-white md:text-[42px]">
-                      {banner.heading}
+                      {headingTail ? (
+                        <>
+                          {headingLead}
+                          <br />
+                          {headingTail}
+                        </>
+                      ) : (
+                        banner.heading
+                      )}
                     </h1>
                     {banner.description ? (
                       <p className="mt-3 text-[15px] leading-relaxed text-white/85 md:text-[16px]">
