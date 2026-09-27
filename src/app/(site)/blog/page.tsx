@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { ContactCTA } from "@/components/home/ContactCTA";
-import { getPublishedPosts } from "@/lib/public/blog";
+import { getPublishedPostsPage } from "@/lib/public/blog";
+import { cn } from "@/lib/utils";
 
 const description =
   "Zaraloğlu Arçelik blogu: ürün rehberleri, bakım önerileri ve mağazamızdan haberler.";
@@ -29,8 +31,14 @@ function formatDate(iso: string | null) {
   });
 }
 
-export default async function BlogPage() {
-  const posts = await getPublishedPosts();
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ sayfa?: string }>;
+}) {
+  const { sayfa } = await searchParams;
+  const requestedPage = Number(sayfa) || 1;
+  const { posts, totalPages, page } = await getPublishedPostsPage(requestedPage);
 
   return (
     <>
@@ -84,6 +92,50 @@ export default async function BlogPage() {
               ))}
             </div>
           )}
+
+          {totalPages > 1 ? (
+            <nav
+              aria-label="Sayfalama"
+              className="mt-12 flex items-center justify-center gap-1.5"
+            >
+              <Link
+                href={`/blog?sayfa=${Math.max(1, page - 1)}`}
+                aria-disabled={page === 1}
+                className={cn(
+                  "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#e6e6e6] text-[#222] transition hover:border-[#c9c9c9]",
+                  page === 1 && "pointer-events-none opacity-40"
+                )}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Link>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <Link
+                  key={n}
+                  href={`/blog?sayfa=${n}`}
+                  className={cn(
+                    "inline-flex h-9 w-9 items-center justify-center rounded-full text-[13px] font-bold transition",
+                    n === page
+                      ? "bg-[#e4032e] text-white"
+                      : "text-[#4a4a4a] hover:bg-[#f5f5f5]"
+                  )}
+                >
+                  {n}
+                </Link>
+              ))}
+
+              <Link
+                href={`/blog?sayfa=${Math.min(totalPages, page + 1)}`}
+                aria-disabled={page === totalPages}
+                className={cn(
+                  "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#e6e6e6] text-[#222] transition hover:border-[#c9c9c9]",
+                  page === totalPages && "pointer-events-none opacity-40"
+                )}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+            </nav>
+          ) : null}
         </div>
       </section>
 

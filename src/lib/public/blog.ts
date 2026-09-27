@@ -14,6 +14,37 @@ export async function getPublishedPosts(): Promise<PublicBlogPost[]> {
   return data ?? [];
 }
 
+export const BLOG_PAGE_SIZE = 12;
+
+export async function getPublishedPostsPage(page: number): Promise<{
+  posts: PublicBlogPost[];
+  totalPages: number;
+  page: number;
+}> {
+  const supabase = await createServerSupabaseClient();
+
+  const { count, error: countError } = await supabase
+    .from("blog_posts")
+    .select("*", { count: "exact", head: true })
+    .eq("published", true);
+  if (countError) throw countError;
+
+  const totalPages = Math.max(1, Math.ceil((count ?? 0) / BLOG_PAGE_SIZE));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const from = (safePage - 1) * BLOG_PAGE_SIZE;
+  const to = from + BLOG_PAGE_SIZE - 1;
+
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select("*")
+    .eq("published", true)
+    .order("published_at", { ascending: false })
+    .range(from, to);
+  if (error) throw error;
+
+  return { posts: data ?? [], totalPages, page: safePage };
+}
+
 export async function getPublishedPostBySlug(
   slug: string
 ): Promise<PublicBlogPost | null> {
