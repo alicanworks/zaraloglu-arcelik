@@ -21,10 +21,10 @@ export function CampaignBrowser({ campaigns }: { campaigns: Campaign[] }) {
     setActive(match ?? "Tümü");
   }, [searchParams]);
 
-  const tabs = useMemo<Filter[]>(() => {
-    const present = new Set(campaigns.map((c) => c.category));
-    return ["Tümü", ...campaignCategories.filter((c) => present.has(c))];
-  }, [campaigns]);
+  const tabs = useMemo<Filter[]>(
+    () => ["Tümü", ...campaignCategories],
+    []
+  );
 
   const filtered = useMemo(
     () =>
