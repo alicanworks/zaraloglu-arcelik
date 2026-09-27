@@ -5,10 +5,19 @@ import { PageHero } from "@/components/layout/PageHero";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { getPublishedPosts } from "@/lib/public/blog";
 
+const description =
+  "Zaraloğlu Arçelik blogu: ürün rehberleri, bakım önerileri ve mağazamızdan haberler.";
+
 export const metadata: Metadata = {
   title: "Blog",
-  description:
-    "Zaraloğlu Arçelik blogu: ürün rehberleri, bakım önerileri ve mağazamızdan haberler.",
+  description,
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog | Zaraloğlu Arçelik",
+    description,
+    url: "/blog",
+    type: "website",
+  },
 };
 
 function formatDate(iso: string | null) {

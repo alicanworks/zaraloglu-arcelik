@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Plus } from "lucide-react";
+import { AlertTriangle, Plus } from "lucide-react";
 import { listPosts } from "@/lib/admin/blog";
+import { checkBlogSeo } from "@/lib/admin/seo";
 import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -37,10 +38,19 @@ export default async function AdminBlogPage() {
                 <th className="px-5 py-3 font-bold">Yazar</th>
                 <th className="px-5 py-3 font-bold">Tarih</th>
                 <th className="px-5 py-3 font-bold">Durum</th>
+                <th className="px-5 py-3 font-bold">SEO</th>
               </tr>
             </thead>
             <tbody>
-              {posts.map((p) => (
+              {posts.map((p) => {
+                const seoIssues = checkBlogSeo({
+                  title: p.title,
+                  slug: p.slug,
+                  excerpt: p.excerpt ?? "",
+                  content: p.content ?? "",
+                  coverImage: p.cover_image ?? "",
+                });
+                return (
                 <tr
                   key={p.id}
                   className="border-b border-[#eee] last:border-0 hover:bg-[#f9f9f9]"
@@ -70,8 +80,25 @@ export default async function AdminBlogPage() {
                       {p.published ? "Yayında" : "Taslak"}
                     </span>
                   </td>
+                  <td className="px-5 py-3">
+                    {seoIssues.length > 0 ? (
+                      <Link
+                        href={`/admin/blog/${p.id}`}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-bold text-amber-800 hover:bg-amber-200"
+                        title={seoIssues.map((i) => i.message).join(" ")}
+                      >
+                        <AlertTriangle className="h-3.5 w-3.5" />
+                        {seoIssues.length} uyarı
+                      </Link>
+                    ) : (
+                      <span className="rounded-full bg-green-100 px-2.5 py-1 text-[11px] font-bold text-green-700">
+                        Temiz
+                      </span>
+                    )}
+                  </td>
                 </tr>
-              ))}
+                );
+              })}
             </tbody>
           </table>
         )}

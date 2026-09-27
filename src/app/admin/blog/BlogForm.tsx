@@ -2,10 +2,11 @@
 
 import type React from "react";
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
-import { Loader2, Trash2 } from "lucide-react";
+import { useMemo, useState, useTransition } from "react";
+import { AlertTriangle, Loader2, OctagonAlert, Trash2 } from "lucide-react";
 import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import type { BlogPostRow } from "@/lib/admin/blog";
+import { checkBlogSeo } from "@/lib/admin/seo";
 import { createPostAction, deletePostAction, updatePostAction } from "./actions";
 
 function slugify(input: string) {
@@ -42,6 +43,18 @@ export function BlogForm({ initial }: { initial?: BlogPostRow }) {
   const [coverImage, setCoverImage] = useState(initial?.cover_image ?? "");
   const [author, setAuthor] = useState(initial?.author ?? "");
   const [published, setPublished] = useState(initial?.published ?? false);
+
+  const seoIssues = useMemo(
+    () =>
+      checkBlogSeo({
+        title,
+        slug,
+        excerpt: excerpt ?? "",
+        content: content ?? "",
+        coverImage: coverImage ?? "",
+      }),
+    [title, slug, excerpt, content, coverImage]
+  );
 
   const inputClass =
     "mt-1.5 h-10 w-full rounded-[4px] border border-[#d6d6d6] px-3 text-sm outline-none focus:border-[#222]";
@@ -167,6 +180,39 @@ export function BlogForm({ initial }: { initial?: BlogPostRow }) {
           />
         </div>
       </section>
+
+      {seoIssues.length > 0 ? (
+        <section className="rounded-[6px] border border-[#f0c14b] bg-[#fffbf0] p-5">
+          <h2 className="flex items-center gap-2 text-[13px] font-black text-[#8a6d1f]">
+            <AlertTriangle className="h-4 w-4" />
+            SEO Uyarıları
+          </h2>
+          <ul className="mt-3 space-y-2">
+            {seoIssues.map((issue, i) => (
+              <li
+                key={i}
+                className={
+                  "flex items-start gap-2 text-[13px] " +
+                  (issue.level === "error"
+                    ? "font-semibold text-[#c10228]"
+                    : "text-[#6b5a1e]")
+                }
+              >
+                {issue.level === "error" ? (
+                  <OctagonAlert className="mt-0.5 h-4 w-4 shrink-0" />
+                ) : (
+                  <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                )}
+                {issue.message}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : (
+        <section className="rounded-[6px] border border-[#bfe3c8] bg-[#f2fbf4] px-5 py-3 text-[13px] font-semibold text-[#227a44]">
+          SEO kontrolü temiz — başlık, özet, kapak görseli ve içerik yeterli görünüyor.
+        </section>
+      )}
 
       {error ? (
         <p className="rounded-[4px] bg-red-50 px-4 py-3 text-[13px] text-[#c10228]">

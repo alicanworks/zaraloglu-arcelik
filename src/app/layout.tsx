@@ -22,13 +22,53 @@ export const metadata: Metadata = {
     "Arçelik kampanya",
     "beyaz eşya kampanya",
     "klima kampanya",
-    "Ankara Arçelik",
+    "Ümraniye Arçelik",
+    "İstanbul Arçelik bayi",
   ],
   openGraph: {
     type: "website",
     locale: "tr_TR",
     siteName: store.shortName,
   },
+};
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ElectronicsStore",
+  name: store.shortName,
+  description: store.description,
+  telephone: store.phoneDisplay,
+  email: store.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: store.address.line1,
+    addressLocality: store.address.district,
+    addressRegion: store.address.city,
+    postalCode: "34774",
+    addressCountry: "TR",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "09:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday"],
+      opens: "11:00",
+      closes: "18:00",
+    },
+  ],
+  sameAs: store.social.map((s) => s.href),
 };
 
 /**
@@ -43,6 +83,10 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${sofiaSans.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-surface text-ink antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         {children}
       </body>
     </html>

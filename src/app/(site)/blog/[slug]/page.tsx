@@ -22,9 +22,28 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPublishedPostBySlug(slug);
   if (!post) return {};
+
+  const description = post.excerpt ?? undefined;
+
   return {
     title: post.title,
-    description: post.excerpt ?? undefined,
+    description,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description,
+      url: `/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.published_at ?? undefined,
+      authors: post.author ? [post.author] : undefined,
+      images: post.cover_image ? [{ url: post.cover_image }] : undefined,
+    },
+    twitter: {
+      card: post.cover_image ? "summary_large_image" : "summary",
+      title: post.title,
+      description,
+      images: post.cover_image ? [post.cover_image] : undefined,
+    },
   };
 }
 
@@ -45,8 +64,26 @@ export default async function BlogPostPage({
   const allPosts = await getPublishedPosts();
   const otherPosts = allPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt ?? undefined,
+    image: post.cover_image ?? undefined,
+    author: post.author
+      ? { "@type": "Person", name: post.author }
+      : undefined,
+    datePublished: post.published_at ?? undefined,
+    dateModified: post.updated_at ?? post.published_at ?? undefined,
+    mainEntityOfPage: `https://zaralogluarcelik.com.tr/blog/${post.slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <section className="bg-surface">
         <div className="container-page max-w-3xl pb-2 pt-10 md:pt-14">
           {post.published_at ? (
