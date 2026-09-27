@@ -46,7 +46,6 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
     initial?.category ?? campaignCategories[0]
   );
   const [description, setDescription] = useState(initial?.description ?? "");
-  const [benefit, setBenefit] = useState(initial?.benefit ?? "");
   const [tag, setTag] = useState(initial?.tag ?? "");
   const [image, setImage] = useState(initial?.image ?? "");
   const [startDate, setStartDate] = useState(initial?.start_date ?? "");
@@ -57,7 +56,6 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
   const [oldPrice, setOldPrice] = useState(
     initial?.old_price?.toString() ?? ""
   );
-  const [terms, setTerms] = useState(initial?.terms?.join("\n") ?? "");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,7 +66,7 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
       title,
       category,
       description,
-      benefit,
+      benefit: "",
       tag: tag || null,
       image,
       start_date: startDate,
@@ -77,10 +75,7 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
       published,
       price: price ? Number(price) : null,
       old_price: oldPrice ? Number(oldPrice) : null,
-      terms: terms
-        .split("\n")
-        .map((t) => t.trim())
-        .filter(Boolean),
+      terms: [],
     };
 
     startTransition(async () => {
@@ -159,11 +154,11 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
             </select>
           </div>
           <div>
-            <label className={labelClass}>Rozet / Etiket (opsiyonel)</label>
+            <label className={labelClass}>Taksit Badge (opsiyonel)</label>
             <input
               value={tag ?? ""}
               onChange={(e) => setTag(e.target.value)}
-              placeholder="örn. Yaz Kampanyası"
+              placeholder="örn. 12 Taksit"
               className={inputClass}
             />
           </div>
@@ -197,17 +192,6 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="mt-1.5 w-full rounded-[4px] border border-[#d6d6d6] px-3 py-2 text-sm outline-none focus:border-[#222]"
-          />
-        </div>
-
-        <div className="mt-4">
-          <label className={labelClass}>Fayda / Avantaj Metni</label>
-          <input
-            required
-            value={benefit}
-            onChange={(e) => setBenefit(e.target.value)}
-            placeholder="örn. Ücretsiz standart montaj + 12 taksit"
-            className={inputClass}
           />
         </div>
 
@@ -256,19 +240,6 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
             Yayında
           </label>
         </div>
-      </section>
-
-      <section className="rounded-[6px] border border-[#e6e6e6] bg-white p-6">
-        <h2 className="text-[15px] font-black">Katılım Koşulları</h2>
-        <p className="mt-1 text-[12px] text-[#767676]">
-          Her satıra bir madde yazın.
-        </p>
-        <textarea
-          rows={5}
-          value={terms}
-          onChange={(e) => setTerms(e.target.value)}
-          className="mt-2 w-full rounded-[4px] border border-[#d6d6d6] px-3 py-2 text-sm outline-none focus:border-[#222]"
-        />
       </section>
 
       {error ? (

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CreditCard } from "lucide-react";
 import type { Campaign } from "@/data/campaigns";
 import { formatDateRange, formatPrice } from "@/lib/utils";
 import { campaignAccent } from "@/lib/campaign-colors";
@@ -34,6 +34,12 @@ export function CampaignListRow({
           sizes="(max-width: 768px) 100vw, 360px"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
         />
+        {campaign.tag ? (
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-[#e4032e] px-3.5 py-1.5 text-[12px] font-black uppercase tracking-wide text-white shadow-card md:left-4 md:top-4">
+            <CreditCard className="h-3.5 w-3.5" />
+            {campaign.tag}
+          </span>
+        ) : null}
         {campaign.price ? (
           <span className="absolute bottom-3 right-3 flex flex-col items-end gap-0.5 rounded-[6px] bg-white px-4 py-2.5 shadow-card md:bottom-4 md:right-4 md:px-5 md:py-3">
             {campaign.oldPrice ? (
