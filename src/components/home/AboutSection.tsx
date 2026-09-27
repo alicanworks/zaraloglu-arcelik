@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, BadgeCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { store } from "@/data/store";
 import { Button } from "@/components/ui/button";
 
@@ -70,17 +70,6 @@ export function AboutSection() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-            </div>
-            <div className="absolute -bottom-5 -left-5 hidden items-center gap-3 rounded-lg border border-line bg-surface p-4 shadow-card sm:flex">
-              <span className="flex h-11 w-11 items-center justify-center rounded-md bg-brand-tint text-brand">
-                <BadgeCheck className="h-5 w-5" />
-              </span>
-              <span className="text-sm font-semibold leading-snug text-ink">
-                Yetkili Arçelik Bayisi
-                <span className="block text-[13px] font-normal text-muted">
-                  Arçelik güvencesiyle
-                </span>
-              </span>
             </div>
           </div>
         </div>
