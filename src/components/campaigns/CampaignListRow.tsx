@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { Campaign } from "@/data/campaigns";
-import { formatDateRange } from "@/lib/utils";
+import { formatDateRange, formatPrice } from "@/lib/utils";
 import { campaignAccent } from "@/lib/campaign-colors";
 import { store } from "@/data/store";
 
@@ -34,6 +34,18 @@ export function CampaignListRow({
           sizes="(max-width: 768px) 100vw, 360px"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
         />
+        {campaign.price ? (
+          <span className="absolute bottom-3 right-3 flex flex-col items-end rounded-[4px] bg-white px-3 py-1.5 shadow-card md:bottom-4 md:right-4">
+            {campaign.oldPrice ? (
+              <span className="text-[12px] font-semibold text-muted line-through">
+                {formatPrice(campaign.oldPrice)}
+              </span>
+            ) : null}
+            <span className="text-[16px] font-black leading-tight text-brand md:text-[18px]">
+              {formatPrice(campaign.price)}
+            </span>
+          </span>
+        ) : null}
       </div>
 
       <div
