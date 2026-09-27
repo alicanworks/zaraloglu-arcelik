@@ -42,7 +42,7 @@ export const store: StoreInfo = {
   phoneHref: "tel:+905386958835",
   whatsappDisplay: "0538 695 88 35",
   whatsappHref: `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`,
-  email: "info@zaralogluarcelik.com.tr",
+  email: "zaralogluarcelik@gmail.com",
   mapsDirectionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=" +
     encodeURIComponent(
