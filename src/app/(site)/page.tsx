@@ -7,13 +7,10 @@ import { TrustSection } from "@/components/home/TrustSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { getPublicCampaigns } from "@/lib/public/campaigns";
-import { getPublicBanners } from "@/lib/public/banners";
+import { banners } from "@/data/banners";
 
 export default async function HomePage() {
-  const [campaigns, banners] = await Promise.all([
-    getPublicCampaigns(),
-    getPublicBanners(),
-  ]);
+  const campaigns = await getPublicCampaigns();
 
   return (
     <>

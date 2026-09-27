@@ -1,16 +1,16 @@
 /**
- * Hero banner type definition.
- *
- * Actual banner content lives in Supabase (see `src/lib/public/banners.ts`
- * for the public read path and `src/lib/admin/banners.ts` for admin CRUD).
+ * Hero banner content.
  *
  * Each entry is a full-bleed photograph. Text/CTA are optional — if the
- * artwork already has text baked in, leave them out and the banner renders
- * as pure image. If provided, `heading`/`description`/`ctaLabel` render as a
- * text overlay on top of the photo.
+ * artwork already has text baked in (Arçelik style), leave them out and the
+ * banner renders as pure image. If provided, `heading`/`description`/`cta`
+ * render as a text overlay on top of the photo.
  *
- * With a single active banner the hero is a static banner (no dots/arrows).
- * More than one active banner turns it back into a slider.
+ * With a single entry the hero is a static banner (no dots/arrows). Add more
+ * entries to turn it back into a slider.
+ *
+ * Recommended size: ~1920×1080 (16:9), yüksek çözünürlük, JPG/WebP.
+ * `href` opsiyoneldir; verilirse afişin tamamı o adrese link olur.
  */
 export interface Banner {
   id: string;
@@ -23,3 +23,16 @@ export interface Banner {
   description?: string;
   ctaLabel?: string;
 }
+
+export const banners: Banner[] = [
+  {
+    id: "mutfak-buzdolabi",
+    image: "/images/banners/mutfak-buzdolabi.webp",
+    alt: "Modern mutfakta Arçelik buzdolabı",
+    href: "/kampanyalar",
+    heading: "Eviniz İçin Doğru Adres: Arçelik Güvencesi",
+    description:
+      "Yetkili Arçelik bayisi olarak, evinizin ihtiyaç duyduğu her üründe güvenilir hizmet ve mağazamıza özel fiyatlar sunuyoruz.",
+    ctaLabel: "Kampanyaları İncele",
+  },
+];

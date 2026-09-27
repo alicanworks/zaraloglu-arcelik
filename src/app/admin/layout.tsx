@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GalleryHorizontal, LogOut, Megaphone, Newspaper } from "lucide-react";
+import { LogOut, Megaphone, Newspaper } from "lucide-react";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { signOutAction } from "./actions";
 
@@ -29,7 +29,6 @@ export default async function AdminLayout({
 
   const nav = [
     { href: "/admin/kampanyalar", label: "Kampanyalar", icon: Megaphone },
-    { href: "/admin/banners", label: "Afişler", icon: GalleryHorizontal },
     { href: "/admin/blog", label: "Blog", icon: Newspaper },
   ];
 
