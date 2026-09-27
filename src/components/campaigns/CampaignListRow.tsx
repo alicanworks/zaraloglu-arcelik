@@ -35,13 +35,13 @@ export function CampaignListRow({
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
         />
         {campaign.price ? (
-          <span className="absolute bottom-3 right-3 flex flex-col items-end rounded-[4px] bg-white px-3 py-1.5 shadow-card md:bottom-4 md:right-4">
+          <span className="absolute bottom-3 right-3 flex flex-col items-end gap-0.5 rounded-[6px] bg-white px-4 py-2.5 shadow-card md:bottom-4 md:right-4 md:px-5 md:py-3">
             {campaign.oldPrice ? (
-              <span className="text-[12px] font-semibold text-muted line-through">
+              <span className="text-[15px] font-bold text-[#c10228] line-through decoration-2 md:text-[17px]">
                 {formatPrice(campaign.oldPrice)}
               </span>
             ) : null}
-            <span className="text-[16px] font-black leading-tight text-brand md:text-[18px]">
+            <span className="text-[22px] font-black leading-tight text-ink md:text-[26px]">
               {formatPrice(campaign.price)}
             </span>
           </span>
