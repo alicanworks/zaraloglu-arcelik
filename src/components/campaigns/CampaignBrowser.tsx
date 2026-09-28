@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { campaignCategories, type Campaign } from "@/data/campaigns";
 import { cn } from "@/lib/utils";
+import { campaignAccents } from "@/lib/campaign-colors";
 import { CampaignListRow } from "./CampaignListRow";
 
 type Filter = "Tümü" | (typeof campaignCategories)[number];
@@ -38,6 +39,11 @@ export function CampaignBrowser({ campaigns }: { campaigns: Campaign[] }) {
     const key = sort === "start" ? "startDate" : "endDate";
     return [...filtered].sort((a, b) => a[key].localeCompare(b[key]));
   }, [filtered, sort]);
+
+  const accents = useMemo(
+    () => campaignAccents(sorted.map((c) => c.category)),
+    [sorted]
+  );
 
   return (
     <div>
@@ -88,8 +94,12 @@ export function CampaignBrowser({ campaigns }: { campaigns: Campaign[] }) {
       {/* List */}
       {sorted.length > 0 ? (
         <div className="flex flex-col gap-4 md:gap-5">
-          {sorted.map((campaign) => (
-            <CampaignListRow key={campaign.id} campaign={campaign} />
+          {sorted.map((campaign, i) => (
+            <CampaignListRow
+              key={campaign.id}
+              campaign={campaign}
+              accent={accents[i]}
+            />
           ))}
         </div>
       ) : (

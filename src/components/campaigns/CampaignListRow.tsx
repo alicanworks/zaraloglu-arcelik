@@ -14,11 +14,14 @@ import { store } from "@/data/store";
 export function CampaignListRow({
   campaign,
   priority = false,
+  accent,
 }: {
   campaign: Campaign;
   priority?: boolean;
+  /** Bitişik kartlarda aynı rengin tekrarını önlemek için dışarıdan verilir. */
+  accent?: string;
 }) {
-  const bg = campaignAccent(campaign.category);
+  const bg = accent ?? campaignAccent(campaign.category);
 
   return (
     <a
