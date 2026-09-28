@@ -185,9 +185,8 @@ export function CampaignForm({ initial }: { initial?: CampaignRow }) {
         </div>
 
         <div className="mt-4">
-          <label className={labelClass}>Kısa Açıklama</label>
+          <label className={labelClass}>Kısa Açıklama (opsiyonel)</label>
           <textarea
-            required
             rows={2}
             value={description}
             onChange={(e) => setDescription(e.target.value)}

@@ -66,9 +66,11 @@ export function CampaignListRow({
         <h3 className="text-[19px] font-black leading-snug text-white md:text-[28px]">
           {campaign.title}
         </h3>
-        <p className="max-w-md text-[14px] leading-relaxed text-white/80 md:text-[15px]">
-          {campaign.description}
-        </p>
+        {campaign.description ? (
+          <p className="max-w-md text-[14px] leading-relaxed text-white/80 md:text-[15px]">
+            {campaign.description}
+          </p>
+        ) : null}
         <span className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-full border border-white/25 bg-ink/40 px-7 py-2.5 text-[12px] font-black uppercase tracking-wide text-white backdrop-blur transition-colors group-hover:bg-ink/60">
           Mağazadan Bilgi Al
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
