@@ -41,6 +41,13 @@ const nextConfig: NextConfig = {
   // çalışacak bağımsız bir server.js üretir — deploy talimatları için
   // /Users/alican/.claude/plans/immutable-scribbling-crystal.md'ye bakın.
   output: "standalone",
+  // Paylaşımlı cPanel hosting'de process limiti düşük olduğundan build'in
+  // paralel worker process'leri spawn etmesi "EAGAIN" ile çöküyordu; tek
+  // worker'a düşürüyoruz.
+  experimental: {
+    cpus: 1,
+    workerThreads: false,
+  },
   async headers() {
     return [
       {
