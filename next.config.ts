@@ -37,6 +37,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // cPanel'in "Setup Node.js App" (Passenger) ortamında minimal bağımlılıkla
+  // çalışacak bağımsız bir server.js üretir — deploy talimatları için
+  // /Users/alican/.claude/plans/immutable-scribbling-crystal.md'ye bakın.
+  output: "standalone",
   async headers() {
     return [
       {
