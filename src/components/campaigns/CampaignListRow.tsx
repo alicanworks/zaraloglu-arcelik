@@ -34,18 +34,6 @@ export function CampaignListRow({
           sizes="(max-width: 768px) 100vw, 360px"
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
         />
-        {campaign.price ? (
-          <span className="absolute bottom-3 right-3 flex flex-col items-end gap-0.5 rounded-[6px] bg-white px-4 py-2.5 shadow-card md:bottom-4 md:right-4 md:px-5 md:py-3">
-            {campaign.oldPrice ? (
-              <span className="text-[15px] font-bold text-[#c10228] line-through decoration-2 md:text-[17px]">
-                {formatPrice(campaign.oldPrice)}
-              </span>
-            ) : null}
-            <span className="text-[22px] font-black leading-tight text-ink md:text-[26px]">
-              {formatPrice(campaign.price)}
-            </span>
-          </span>
-        ) : null}
       </div>
 
       <div
@@ -60,6 +48,19 @@ export function CampaignListRow({
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[12px] font-black uppercase tracking-wide text-[#e4032e] shadow-card">
             <CreditCard className="h-3.5 w-3.5" />
             {campaign.tag}
+          </span>
+        ) : null}
+
+        {campaign.price ? (
+          <span className="flex flex-wrap items-baseline gap-2">
+            {campaign.oldPrice ? (
+              <span className="text-[15px] font-bold text-white/60 line-through decoration-2 md:text-[17px]">
+                {formatPrice(campaign.oldPrice)}
+              </span>
+            ) : null}
+            <span className="text-[24px] font-black leading-tight text-white md:text-[30px]">
+              {formatPrice(campaign.price)}
+            </span>
           </span>
         ) : null}
 
