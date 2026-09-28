@@ -35,7 +35,7 @@ export function CampaignListRow({
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, 360px"
-          className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.04] md:p-6"
+          className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.04]"
         />
       </div>
 
