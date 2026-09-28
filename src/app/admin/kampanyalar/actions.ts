@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import {
   createCampaign,
   deleteCampaign,
+  reorderCampaigns,
   updateCampaign,
   type CampaignFormValues,
 } from "@/lib/admin/campaigns";
@@ -28,4 +29,11 @@ export async function deleteCampaignAction(id: string) {
   await deleteCampaign(id);
   revalidatePath("/admin/kampanyalar");
   redirect("/admin/kampanyalar");
+}
+
+export async function reorderCampaignsAction(orderedIds: string[]) {
+  await reorderCampaigns(orderedIds);
+  revalidatePath("/admin/kampanyalar");
+  revalidatePath("/");
+  revalidatePath("/kampanyalar");
 }

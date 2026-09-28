@@ -26,6 +26,7 @@ export interface Database {
           old_price: number | null;
           terms: string[];
           published: boolean;
+          sort_order: number;
           created_at: string;
           updated_at: string;
         };

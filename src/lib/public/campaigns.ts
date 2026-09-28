@@ -7,7 +7,7 @@ export async function getPublicCampaigns(): Promise<Campaign[]> {
     .from("campaigns")
     .select("*")
     .eq("published", true)
-    .order("start_date", { ascending: false });
+    .order("sort_order", { ascending: true });
   if (error) throw error;
 
   return (data ?? []).map((row) => ({

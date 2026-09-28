@@ -9,7 +9,7 @@ export async function listCampaigns() {
   const { data, error } = await supabase
     .from("campaigns")
     .select("*")
-    .order("start_date", { ascending: false });
+    .order("sort_order", { ascending: true });
   if (error) throw error;
   return data;
 }
@@ -45,9 +45,13 @@ export interface CampaignFormValues {
 export async function createCampaign(values: CampaignFormValues) {
   const supabase = await createServerSupabaseClient();
 
+  const { count } = await supabase
+    .from("campaigns")
+    .select("*", { count: "exact", head: true });
+
   const { data: inserted, error } = await supabase
     .from("campaigns")
-    .insert(values)
+    .insert({ ...values, sort_order: count ?? 0 })
     .select("id")
     .single();
   if (error) throw error;
@@ -69,4 +73,16 @@ export async function deleteCampaign(id: string) {
   const supabase = await createServerSupabaseClient();
   const { error } = await supabase.from("campaigns").delete().eq("id", id);
   if (error) throw error;
+}
+
+/** Sürükle-bırakla yeniden sıralanan kampanya id listesini kalıcı hale getirir. */
+export async function reorderCampaigns(orderedIds: string[]) {
+  const supabase = await createServerSupabaseClient();
+  const results = await Promise.all(
+    orderedIds.map((id, index) =>
+      supabase.from("campaigns").update({ sort_order: index }).eq("id", id)
+    )
+  );
+  const failed = results.find((r) => r.error);
+  if (failed?.error) throw failed.error;
 }
