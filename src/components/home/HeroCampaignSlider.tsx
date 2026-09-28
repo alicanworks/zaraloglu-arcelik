@@ -64,7 +64,7 @@ export function HeroCampaignSlider({ banners }: { banners: Banner[] }) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative mx-auto aspect-[16/9] w-full max-w-[1920px] md:max-h-[480px] lg:max-h-[560px]">
+      <div className="relative mx-auto min-h-[460px] w-full max-w-[1920px] sm:aspect-[16/9] sm:min-h-0 md:max-h-[480px] lg:max-h-[560px]">
         {visible.map((banner, i) => {
           const active = i === current;
           const hasText = Boolean(banner.heading);
